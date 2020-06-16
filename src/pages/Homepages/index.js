@@ -2,13 +2,14 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Container from 'react-bootstrap/Container'
-import { fetchHomepages } from '../../store/user/actions'
-import { selectHomepages } from '../../store/user/selectors'
+import { fetchHomepages } from '../../store/homepages/actions'
+import { selectHomepages } from '../../store/homepages/selectors'
 import Homepage from '../../components/Homepage'
 
 export default function Homepages() {
   const dispatch = useDispatch();
   const homepages = useSelector(selectHomepages);
+  console.log(homepages)
 
   useEffect(() => {
     dispatch(fetchHomepages());
@@ -20,7 +21,7 @@ export default function Homepages() {
       <h1>Homepages</h1>
     </Jumbotron>
     <Container>
-      {homepages.map(homepage = > (
+      {homepages.map(homepage => (
         <Homepage 
         key={homepage.id}
         id={homepage.id}

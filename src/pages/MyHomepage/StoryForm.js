@@ -2,20 +2,20 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
-import image from "react-bootstrap/Image";
+import Image from "react-bootstrap/Image";
 import { useDispatch } from "react-redux";
 import { postStory } from "../../store/user/actions";
 
-export default function MyHomepageForm() {
+export default function StoryForm() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState("https://source.unsplash.com/1600x900/?");
+  const [imageUrl, setImageUrl] = useState("https://source.unsplash.com/1600x900/?");
 
   function submitForm(e) {
     e.preventDefault();
-    console.log(name, content, image);
-    dispatch(postStory(name, content, image));
+    console.log(name, content, imageUrl);
+    dispatch(postStory(name, content, imageUrl));
   }
 
   return (
@@ -41,10 +41,10 @@ export default function MyHomepageForm() {
         />
       </Form.Group>
       <Form.Group>
-        <Form.Label>Image</Form.Label>
+        <Form.Label>Image Url</Form.Label>
         <Form.Control 
-        value={image}
-        onChange={(e) => setImage(e.target.value)}
+        value={imageUrl}
+        onChange={(e) => setImageUrl(e.target.value)}
         type="text"
         placeholder="A picture says more than a thousand words"
         />
